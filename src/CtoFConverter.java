@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main
+public class CtoFConverter
 {
     public static void main(String[] args)
     {
@@ -21,7 +21,7 @@ public class Main
                 ferTemp = (celTemp * 9/5) + 32;
 
                 System.out.println(celTemp + " degrees Celsius is " + ferTemp + " degrees Fahrenheit");
-                if(celTemp <= 0)
+                if(celTemp <= -18)
                 {
                     System.out.println("Wow that's freezing!");
                 }
