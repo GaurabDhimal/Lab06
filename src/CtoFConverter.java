@@ -21,13 +21,13 @@ public class CtoFConverter
                 ferTemp = (celTemp * 9/5) + 32;
 
                 System.out.println(celTemp + " degrees Celsius is " + ferTemp + " degrees Fahrenheit");
-                if(celTemp <= -18)
+                if(celTemp <= 0)
                 {
-                    System.out.println("Wow that's freezing!");
+                    System.out.println("Water will freeze at this temperature!");
                 }
-                if(celTemp >= 38)
+                if(celTemp >= 100)
                 {
-                    System.out.println("Wow that's boiling!");
+                    System.out.println("Water will boil at this temperature!");
                 }
 
                 inputNum = true;
