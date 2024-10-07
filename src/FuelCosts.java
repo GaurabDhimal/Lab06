@@ -10,54 +10,70 @@ public class FuelCosts
         double fuelEff = 0;
         double galCost = 0;
         double hundCost = 0;
+        double totalRange = 0;
         String trash = "";
         boolean done = false;
         boolean galDone = false;
         boolean fuelDone = false;
-        boolean costDone = false;
+        boolean priceDone = false;
 
         do
         {
-            System.out.print("Enter your gallon capacity: ");
-            if (in.hasNextDouble())
+            do
             {
-                galCapacity = in.nextDouble();
-                in.nextLine();
-
-                System.out.print("Enter your fuel efficiency in mile per gallon: ");
+                System.out.print("Enter your gallon capacity: ");
                 if (in.hasNextDouble())
                 {
-                    fuelEff = in.nextDouble();
+                    galDone = true;
+                    galCapacity = in.nextDouble();
                     in.nextLine();
-
-                    System.out.println("Enter the price of gas per gallon: ");
-                    if (in.hasNextDouble())
+                    do
                     {
-                        galCost = in.nextDouble();
-                        in.nextLine();
+                        System.out.print("Enter your fuel efficiency in mile per gallon: ");
+                        if (in.hasNextDouble())
+                        {
+                            fuelDone = true;
+                            fuelEff = in.nextDouble();
+                            in.nextLine();
 
-                        hundCost = 100/galCost;
-                        System.out.println("The cost to drive 100 miles on an empty tank is $" + hundCost);
+                            do
+                            {
+                                System.out.print("Enter the price of gas per gallon: $");
+                                if (in.hasNextDouble())
+                                {
+                                    galCost = in.nextDouble();
+                                    in.nextLine();
+
+                                    hundCost = 100 / galCost;
+                                    System.out.println("The cost to drive 100 miles on an empty tank is $" + hundCost);
+                                    totalRange = galCapacity * fuelEff;
+                                    System.out.println("On a full tank of gas, you can drive " + totalRange + " miles");
+
+                                    priceDone = true;
+                                    done = true;
 
 
-                    }
-                    else
-                    {
-                        trash = in.nextLine();
-                        System.out.println(trash + " is not a valid output, try again!");
-                    }
+                                }
+                                else
+                                {
+                                    trash = in.nextLine();
+                                    System.out.println(trash + " is not a valid output, try again!");
+                                }
+                            } while(!priceDone);
+                        }
+                        else
+                        {
+                            trash = in.nextLine();
+                            System.out.println(trash + " is not a valid output, try again!");
+                        }
+                    }while(!fuelDone);
                 }
                 else
                 {
                     trash = in.nextLine();
                     System.out.println(trash + " is not a valid output, try again!");
                 }
-            }
-            else
-            {
-                trash = in.nextLine();
-                System.out.println(trash + " is not a valid output, try again!");
-            }
+            }while(!galDone);
         }while(!done);
     }
 }
